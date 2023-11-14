@@ -2,7 +2,7 @@ name: base_project
 description: A new Flutter project use Clean Architecture + Shorebird.
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.0+3
 
 environment:
   sdk: '>=3.1.3 <4.0.0'
@@ -30,6 +30,8 @@ dependencies:
   #  list external
   shorebird_code_push: ^1.1.3
   restart_app: ^1.2.1
+  fluttertoast: ^8.2.4
+  file_picker: ^6.1.1
 
 dev_dependencies:
   flutter_test:

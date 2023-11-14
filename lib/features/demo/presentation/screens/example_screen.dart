@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:restart_app/restart_app.dart';
 import 'package:shorebird_code_push/shorebird_code_push.dart';
 
@@ -19,10 +21,10 @@ class _ExampleScreenState extends State<ExampleScreen> {
   bool _isCheckingForUpdate = false;
 
   /// sẽ có các case cần phải check:
-  /// - thay đổi logic/UI
-  /// - thay đổi thư viện
-  /// - thay đổi quyền truy cập của android/ios
-  /// - thay đổi cấu hình của android/android manifest
+  /// - thay đổi logic/UI (new patch)
+  /// - thay đổi thư viện (new release)
+  /// - thay đổi quyền truy cập của android/ios (new release)
+  /// - thay đổi cấu hình của android/android manifest (new release)
 
   @override
   void initState() {
@@ -144,7 +146,7 @@ class _ExampleScreenState extends State<ExampleScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('Hế lô patch mới nè33333'),
+            const Text('Hế lô patch mới nè'),
             const Text('Current patch version:'),
             Text(
               heading,
@@ -165,6 +167,36 @@ class _ExampleScreenState extends State<ExampleScreen> {
                     ? const _LoadingIndicator()
                     : const Text('Check for update'),
               ),
+            ElevatedButton(
+              onPressed: () {
+                Fluttertoast.showToast(
+                    msg: "This is Center Short Toast",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0);
+              },
+              child: const Text('Show toast'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                FilePickerResult? result =
+                    await FilePicker.platform.pickFiles();
+
+                if (result != null) {
+                  PlatformFile file = result.files.first;
+
+                  print(file.name);
+                  print(file.bytes);
+                  print(file.size);
+                  print(file.extension);
+                  print(file.path);
+                }
+              },
+              child: const Text('Pick file'),
+            )
           ],
         ),
       ),

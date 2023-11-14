@@ -34,7 +34,13 @@ fluttergen -c pubspec.yaml
     shorebird login (login with account shorebird)
     shorebird init
     shorebird release android
-    shorebird release ios
+    shorebird release ios-alpha
+```
+
+- After create release, to preview new release, run command:
+
+```
+shorebird preview
 ```
 
 - Run to publish new patch for android
